@@ -1,12 +1,13 @@
 import express from "express";
 
-// import {listCustomers, insertCustomer, editCustomer, showSinlgeCustomer} from '../controllers/customersController.js'
+import {getUrl, getUrlOpen, deleteUrl} from '../controllers/urlsController.js'
 
 // import {validateCustomer} from '../middlewares/validateCustomer.js'
 
 const urlsRoutes = express.Router()
 
-urlsRoutes.post('/signup', ()=>2)
-urlsRoutes.post('/signin/', ()=>2)
+urlsRoutes.get('/urls/:id', getUrl)
+urlsRoutes.get('/urls/open/:shortUrl', getUrlOpen)
+urlsRoutes.delete('/urls/:id', deleteUrl)
 
 export default urlsRoutes

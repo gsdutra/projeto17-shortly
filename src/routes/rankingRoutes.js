@@ -1,9 +1,9 @@
 import express from "express";
 
-// import {listCustomers, insertCustomer, editCustomer, showSinlgeCustomer} from '../controllers/customersController.js'
+import {ranking} from '../controllers/rankingController.js'
 
 const rankingRoutes = express.Router()
 
-rankingRoutes.get('/ranking', ()=>2)
+rankingRoutes.get('/ranking', ranking)
 
 export default rankingRoutes

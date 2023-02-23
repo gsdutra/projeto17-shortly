@@ -1,9 +1,9 @@
 import express from "express";
 
-// import {listCustomers, insertCustomer, editCustomer, showSinlgeCustomer} from '../controllers/customersController.js'
+import {userMe} from '../controllers/userController.js'
 
 const userRoutes = express.Router()
 
-userRoutes.get('/users/me', ()=>2)
+userRoutes.get('/users/me', userMe)
 
 export default userRoutes

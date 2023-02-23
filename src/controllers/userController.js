@@ -1,4 +1,4 @@
-export async function ranking(req, res){
+export async function userMe(req, res){
 	try {
 		res.sendStatus(200)
 	} catch (error) {

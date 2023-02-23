@@ -1,12 +1,12 @@
 import express from "express";
 
-// import {listCustomers, insertCustomer, editCustomer, showSinlgeCustomer} from '../controllers/customersController.js'
+import {signin, signup} from '../controllers/authController.js'
 
 // import {validateCustomer} from '../middlewares/validateCustomer.js'
 
 const authRoutes = express.Router()
 
-authRoutes.post('/signup', ()=>2)
-authRoutes.post('/signin/', ()=>2)
+authRoutes.post('/signup', signup)
+authRoutes.post('/signin/', signin)
 
 export default authRoutes
