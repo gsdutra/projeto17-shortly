@@ -1,6 +1,9 @@
+import {db} from '../database.connection.js'
+
 export async function signup(req, res){
 	try {
-		res.sendStatus(200)
+		const testQuery = await db.query(`SELECT * FROM users`)
+		res.status(200).send(testQuery.rows)
 	} catch (error) {
 		res.status(500).send(error.message)
 	}
