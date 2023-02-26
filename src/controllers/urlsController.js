@@ -32,7 +32,16 @@ export async function getUrl(req, res){
 }
 export async function getUrlOpen(req, res){
 	try {
-		res.sendStatus(200)
+		const urlId = req.params.shortUrl
+		const data = await db.query(`SELECT * FROM urls WHERE "shortUrl"='${urlId}'`)
+		if (data.rows.length === 0) return res.sendStatus(404)
+
+		const visitCount = Number(data.rows[0].visitCount) + 1
+
+		await db.query(`UPDATE urls SET "visitCount"=${visitCount} WHERE "shortUrl"='${urlId}'`)
+
+		res.redirect(data.rows[0].originalUrl)
+
 	} catch (error) {
 		res.status(500).send(error.message)
 	}
