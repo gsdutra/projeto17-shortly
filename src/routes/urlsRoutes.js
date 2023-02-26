@@ -10,6 +10,6 @@ const urlsRoutes = express.Router()
 urlsRoutes.post('/urls/shorten', verifyToken, validateUrl, postUrl)
 urlsRoutes.get('/urls/:id', getUrl)
 urlsRoutes.get('/urls/open/:shortUrl', getUrlOpen)
-urlsRoutes.delete('/urls/:id', deleteUrl)
+urlsRoutes.delete('/urls/:id', verifyToken, deleteUrl)
 
 export default urlsRoutes
