@@ -17,7 +17,15 @@ export async function postUrl(req, res){
 }
 export async function getUrl(req, res){
 	try {
-		res.sendStatus(200)
+		const urlId = req.params.id
+		const data = await db.query(`SELECT * FROM urls WHERE "shortUrl"='${urlId}'`)
+		if (data.rows.length === 0) return res.sendStatus(404)
+		res.status(200).send({
+			id: data.rows[0].id,
+			shortUrl: urlId,
+			url: data.rows[0].originalUrl
+		})
+
 	} catch (error) {
 		res.status(500).send(error.message)
 	}
