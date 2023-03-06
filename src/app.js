@@ -1,8 +1,16 @@
 import express from "express";
 import cors from 'cors';
-import router from './routes/index.js'
+import router from './routes/index.js';
 import dotenv from "dotenv";
+import pkg from "pg";
 dotenv.config();
+
+const { Pool } = pkg;
+
+const connection = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
 const app = express();
 app.use(express.json());
