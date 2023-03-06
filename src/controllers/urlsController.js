@@ -18,7 +18,7 @@ export async function postUrl(req, res){
 export async function getUrl(req, res){
 	try {
 		const urlId = req.params.id
-		const data = await db.query(`SELECT * FROM urls WHERE id='${urlId}'`)
+		const data = await db.query(`SELECT * FROM urls WHERE id=$1`, [urlId])
 		if (data.rows.length === 0) return res.sendStatus(404)
 		res.status(200).send({
 			id: data.rows[0].id,
@@ -33,7 +33,7 @@ export async function getUrl(req, res){
 export async function getUrlOpen(req, res){
 	try {
 		const urlId = req.params.shortUrl
-		const data = await db.query(`SELECT * FROM urls WHERE "shortUrl"='${urlId}'`)
+		const data = await db.query(`SELECT * FROM urls WHERE "shortUrl"=$1`, [urlId])
 		if (data.rows.length === 0) return res.sendStatus(404)
 
 		const visitCount = Number(data.rows[0].visitCount) + 1

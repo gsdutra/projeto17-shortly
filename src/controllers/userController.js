@@ -4,7 +4,7 @@ export async function userMe(req, res){
 	try {
 		const userId = res.locals.userId
 
-		const userData = await db.query(`SELECT * FROM users WHERE "id"='${userId}'`)
+		const userData = await db.query(`SELECT * FROM users WHERE "id"=$1`, [userId])
 
 		const name = userData.rows[0].name
 

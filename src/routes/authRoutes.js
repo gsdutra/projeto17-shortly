@@ -8,6 +8,6 @@ import { validateSignin } from "../middlewares/validateSignin.js";
 const authRoutes = express.Router()
 
 authRoutes.post('/signup', validateSignup, signup)
-authRoutes.post('/signin/', validateSignin, signin)
+authRoutes.post('/signin', validateSignin, signin)
 
 export default authRoutes
